@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test on Input should match initial snapshot 1`] = `
+<FormGroup
+  className="mt-3"
+>
+  <LabelI
+    text="Home Team"
+  />
+  <FormControl
+    autoComplete="true"
+    name="homeTeam"
+    onChange={[Function]}
+    placeholder="Spain"
+    type="text"
+  />
+</FormGroup>
+`;

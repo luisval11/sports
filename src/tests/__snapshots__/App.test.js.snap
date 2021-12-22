@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test on Dashboard should match initial Snapshot 1`] = `
+<Fragment>
+  <Banner />
+  <TableScores />
+  <Footer />
+</Fragment>
+`;

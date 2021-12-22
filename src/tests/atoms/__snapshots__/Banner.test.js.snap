@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test on Banner should match initial snapshot 1`] = `
+<Card
+  body={false}
+  className="m-3 text-center"
+>
+  <CardBody>
+    <CardTitle>
+      Football World Cup Score Analysis Board
+    </CardTitle>
+  </CardBody>
+</Card>
+`;

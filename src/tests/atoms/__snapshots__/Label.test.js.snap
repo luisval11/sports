@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test on Label should match initial snapshot 1`] = `
+<FormLabel
+  column={false}
+  visuallyHidden={false}
+>
+  Label
+</FormLabel>
+`;
