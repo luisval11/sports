@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Card, Form } from "react-bootstrap";
 import ButtonI from "../../atoms/button/Button";
 import { ErrorForm } from "../../atoms/error/ErrorForm";
@@ -15,17 +15,15 @@ export const AddScore = (props) => {
 	});
 	const [showError, setShowError] = useState(false);
 
+	useEffect(() => {
+		if (showError && !hasFormErrors(formValues)) {
+			setShowError((state) => !state);
+		}
+	}, [formValues, showError])
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(formValues.homeTeam.trim() !== '');
-		if (
-			formValues.homeTeam.trim() === '' ||
-			formValues.awayTeam.trim() === '' ||
-			isNaN(parseInt(formValues.homeTeamScore)) ||
-			parseInt(formValues.homeTeamScore) < 0 ||
-			isNaN(parseInt(formValues.awayTeamScore)) ||
-			parseInt(formValues.awayTeamScore) < 0
-		) {
+		if (hasFormErrors(formValues)) {
 			setShowError(true);
 		} else {
 			setShowError(false);
@@ -43,6 +41,12 @@ export const AddScore = (props) => {
 		return Math.random() * (maxValueId - minValueId) + minValueId;
 	};
 
+	const hasFormErrors = (formValues) => {
+		return formValues.homeTeam.trim() === '' || formValues.awayTeam.trim() === '' || formValues.homeTeam.trim() === formValues.awayTeam.trim()
+			|| isNaN(parseInt(formValues.homeTeamScore)) || parseInt(formValues.homeTeamScore) < 0 
+			|| isNaN(parseInt(formValues.awayTeamScore)) || parseInt(formValues.awayTeamScore) < 0
+	}
+
 	return (
 		<>
 			<Card className="m-3">
@@ -56,7 +60,7 @@ export const AddScore = (props) => {
 							name="homeTeam"
 							placeholder="Spain"
 							autoComplete="true"
-							setInput={handleInputChange}
+							handleInput={handleInputChange}
 						/>
 						<Input
 							className="mt-3"
@@ -67,7 +71,7 @@ export const AddScore = (props) => {
 							max={100}
 							placeholder={0}
 							autoComplete="true"
-							setInput={handleInputChange}
+							handleInput={handleInputChange}
 						/>
 						<Input
 							className="mt-3"
@@ -76,7 +80,7 @@ export const AddScore = (props) => {
 							name="awayTeam"
 							placeholder="Switzerland"
 							autoComplete="true"
-							setInput={handleInputChange}
+							handleInput={handleInputChange}
 						/>
 						<Input
 							className="mt-3"
@@ -87,7 +91,7 @@ export const AddScore = (props) => {
 							max={100}
 							placeholder={0}
 							autoComplete="true"
-							setInput={handleInputChange}
+							handleInput={handleInputChange}
 						/>
 						<div className="form__div">
 							{showError && <ErrorForm />}

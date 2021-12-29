@@ -20,7 +20,7 @@ const Input = (props) => {
 				value={props.value}
 				autoComplete={props.autoComplete}
 				onChange={(event) => {
-					props.setInput && props.setInput(event);
+					props.handleInput && props.handleInput(event);
 				}}
 			/>
 		</Form.Group>
